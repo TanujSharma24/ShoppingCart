@@ -7,8 +7,8 @@ if (document.readyState == 'loading') {
 function ready() {
     taxed = []
     dataToSave = []
+
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
-    
     for (var i = 0; i < removeCartItemButtons.length; i++) {
         var button = removeCartItemButtons[i]
         button.addEventListener('click', removeCartItem)
@@ -53,7 +53,6 @@ function orderSaved(event) {
 }
 
 function orderCancelled(event) {
-    alert('Your order has been successfuly cancelled.')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)
