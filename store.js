@@ -6,6 +6,7 @@ if (document.readyState == 'loading') {
 
 function ready() {
     taxed = []
+    dataToSave = []
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     
     for (var i = 0; i < removeCartItemButtons.length; i++) {
@@ -39,20 +40,18 @@ function ready() {
 function orderSaved(event) {
     alert('Your order has been successfuly saved.')
 
-    var cartItems = document.getElementsByClassName('cart-items')[0]
+    var cartItems = document.getElementsByClassName('cart-items')[0].innerText
     const a = document.createElement("a")
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(cartItems, null, cartItems.length)], { type: "text/plain"
-    }))
+
+    a.href = URL.createObjectURL(new Blob([cartItems]), {type : "text/plain"})
     a.setAttribute("download", "order.txt")
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
 
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
-    }
-    updateCartTotal(taxed)
+    orderCancelled()
 }
+
 function orderCancelled(event) {
     alert('Your order has been successfuly cancelled.')
     var cartItems = document.getElementsByClassName('cart-items')[0]
