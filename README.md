@@ -1,4 +1,4 @@
-# ShoppingCartM
+# ShoppingCart
 
 Mock shopping cart using JavaScript
 
